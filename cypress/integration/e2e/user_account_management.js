@@ -1,13 +1,13 @@
-let unique_nr = Date.now().toString()
+var uniqueNr = Date.now().toString()
 
 describe('Basic user\'s operations:', () => {
     it('creates an account', () => {
         cy
-            .request('POST', '/' + 'user', {
-                'username': 'automated_tester_' + unique_nr,
+            .request('POST', 'user', {
+                'username': 'automated_tester_' + uniqueNr,
                 'firstName': 'John',
                 'lastName': 'Doe',
-                'email': 'test' + unique_nr + '@email.com',
+                'email': 'test' + uniqueNr + '@email.com',
                 'password': 'Password123!',
                 'phone': '123 123 123',
                 'userStatus': 0
@@ -19,7 +19,7 @@ describe('Basic user\'s operations:', () => {
 
     it('logs user in into the system', () => {
         cy
-            .request('GET', '/' + 'user/login', {
+            .request('GET', 'user/login', {
                 'username': 'automated tester',
                 'password': 'Password123!',
             })

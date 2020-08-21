@@ -24,27 +24,7 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
-// Cypress.Commands.add('customerUploadFile', function(fixtureName) {
-//     return cy.fixture(fixtureName).then(function(fixture) {
-//       const { file, fileName, fileType } = fixture;
-//       return customerUploadFile(file, fileName, fileType);
-//     });
-//   });
-
-// Cypress.Commands.add('fileRequest', (filePath, requestOptions) => {
-//     return cy
-//       .fixture(filePath, 'binary')
-//       .then(binary => Cypress.Blob.binaryStringToBlob(binary))
-//       .then(blob => {
-//         const formData = new FormData();
-//         formData.set('file', blob);
-  
-//         return cy.request({ ...requestOptions, form: true, body: formData });
-//       });
-//   }); //
-
-
-Cypress.Commands.add('form_request', (method, url, formData, done) => {
+Cypress.Commands.add('form_request', (method, url, failOnStatusCode = true, formData, done) => {
     const xhr = new XMLHttpRequest();
     xhr.open(method, url);
     xhr.onload = function () {

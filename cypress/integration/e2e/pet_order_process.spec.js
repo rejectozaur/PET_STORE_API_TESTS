@@ -1,7 +1,7 @@
-let pet = null
+var pet = null
 
 describe('Order management process:', () => {
-    it.only('looks for and oders some available pet ', () => {
+    it('looks for and oders some available pet ', () => {
         cy
             .request('GET', '/pet/findByStatus?status=available') // testowanie base_url
             .then((response) => {
@@ -44,7 +44,7 @@ describe('Order management process:', () => {
                 expect(response.status).to.eq(200)
             })
         cy
-            .request({method: 'GET', '/': 'pet/' + pet.id}).then((response) => {
+            .request({method: 'GET', url: 'pet/' + pet.id}).then((response) => {
                 expect(response.body).to.deep.include({name: pet.name, status: 'pending'})
             })
     })
@@ -71,7 +71,7 @@ describe('Order management process:', () => {
 
     it('verifies this pet is no longer displayed to users', () => {
         cy
-            .request({method: 'GET', '/': 'pet/' + pet.id, failOnStatusCode: false}).then((response) => {
+            .request({method: 'GET', url: 'pet/' + pet.id, failOnStatusCode: false}).then((response) => {
                 expect(response.status).to.eq(404)
                 expect(response.body).to.deep.include({message: 'Pet not found'})
             })
