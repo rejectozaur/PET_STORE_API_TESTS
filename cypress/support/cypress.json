@@ -1,4 +1,3 @@
 {
-    "BASE_URL": "https://petstore.swagger.io/v2",
-    "CYPRESS_BASE_URL": "https://petstore.swagger.io/v2"
- }
+    "baseUrl": "https://petstore.swagger.io/"
+}

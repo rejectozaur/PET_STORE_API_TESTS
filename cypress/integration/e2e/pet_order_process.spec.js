@@ -4,7 +4,7 @@ let pet = null
 describe('Order management process:', () => {
     it.only('looks for and oders some available pet ', () => {
         cy
-            .request('GET', '/pet/findByStatus?status=available') // testowanie base_url
+            .request('GET', 'v2/pet/findByStatus?status=available') // testowanie base_url
             .then((response) => {
                 expect(response.status).to.eq(200)
                 pet = response.body[0]
