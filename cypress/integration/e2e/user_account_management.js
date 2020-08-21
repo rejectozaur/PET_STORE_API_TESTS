@@ -1,13 +1,9 @@
-// TO DO
-// naprawić base_url
-
-let url = 'https://petstore.swagger.io/v2/' // az naprawie base_url
 let unique_nr = Date.now().toString()
 
 describe('Basic user\'s operations:', () => {
     it('creates an account', () => {
         cy
-            .request('POST', url + 'user', {
+            .request('POST', '/' + 'user', {
                 'username': 'automated_tester_' + unique_nr,
                 'firstName': 'John',
                 'lastName': 'Doe',
@@ -23,7 +19,7 @@ describe('Basic user\'s operations:', () => {
 
     it('logs user in into the system', () => {
         cy
-            .request('GET', url + 'user/login', {
+            .request('GET', '/' + 'user/login', {
                 'username': 'automated tester',
                 'password': 'Password123!',
             })
@@ -38,7 +34,7 @@ describe('Basic user\'s operations:', () => {
 
     it('logs user out', () => {
         cy
-            .request('GET', url + 'user/logout', {
+            .request('GET', '/' + 'user/logout', {
             })
             .then((response) => {
                 expect(response.status).to.eq(200)

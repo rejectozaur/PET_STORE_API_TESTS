@@ -1,10 +1,9 @@
-let url = 'https://petstore.swagger.io/v2/pet/' // az naprawie base_url
 let pet_id
 
 describe('Store owner', () => {
   it('adds a new pet to store', () => {
     cy
-      .request('POST', url, {
+      .request('POST', '/', {
         'name': 'Ciapek',
         'photoUrls': [
           'https://ujeb.se/YYHsU'
@@ -24,7 +23,7 @@ describe('Store owner', () => {
   it('uploads an additional photo to pet\'s gallery', () => {
     const fileName = 'dog.png';
     const method = 'POST';
-    const endpoint_url = url + pet_id + '/uploadImage'
+    const endpoint_url = '/' + pet_id + '/uploadImage'
     const fileType = 'multipart/form-data';
 
     cy.fixture(fileName, 'binary').then( (excelBin) => {
