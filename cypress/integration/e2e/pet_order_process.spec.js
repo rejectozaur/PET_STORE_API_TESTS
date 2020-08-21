@@ -3,7 +3,7 @@ var pet = null
 describe('Order management process:', () => {
   it('looks for and oders some available pet ', () => {
     cy
-      .request('GET', '/pet/findByStatus?status=available') // testowanie base_url
+      .request('GET', '/pet/findByStatus?status=available')
       .then((response) => {
           expect(response.status).to.eq(200)
           pet = response.body[0]
